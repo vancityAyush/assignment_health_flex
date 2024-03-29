@@ -46,7 +46,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PA_TOKEN }}  # Replace with your personal access token
         with:
-          tag_name: ${{ github.sha }}  # Use commit SHA for tag name (optional)
+          tag : ${{ github.sha }}  # Use commit SHA for tag name (optional)
           file: app-release.apk
           release_name: Flutter Release - ${{ github.sha }}  # Add descriptive release name
           body: |
