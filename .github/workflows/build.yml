@@ -42,13 +42,7 @@ jobs:
           name: release-apk
 
       - name: Create GitHub Release
-        uses: ncipollo/release-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.PA_TOKEN }}  # Replace with your personal access token
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          tag : ${{ github.sha }}  # Use commit SHA for tag name (optional)
-          file: app-release.apk
-          release_name: Flutter Release - ${{ github.sha }}  # Add descriptive release name
-          body: |
-            Built and released automatically from commit ${{ github.sha }}
-            * Changelog (if applicable)
+          files: app-release.apk
