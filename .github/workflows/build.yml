@@ -51,7 +51,7 @@ jobs:
       - name: Create GitHub Release
         uses: njomachen/release-action@v3.0.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Replace with your personal access token
+          GITHUB_TOKEN: ${{ secrets.PA_TOKEN }}  # Replace with your personal access token
         with:
           tag_name: ${{ github.sha }}  # Use commit SHA for tag name (optional)
           file: app-release.apk
