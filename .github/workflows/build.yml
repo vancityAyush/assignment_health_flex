@@ -42,7 +42,7 @@ jobs:
           name: release-apk
 
       - name: Create GitHub Release
-        uses: njomachen/release-action@v3.0.0
+        uses: ncipollo/release-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.PA_TOKEN }}  # Replace with your personal access token
         with:
