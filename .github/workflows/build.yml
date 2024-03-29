@@ -9,21 +9,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Flutter
-        uses: google/flutter-action@v2
+        uses: subosito/flutter-action@v2
         with:
+          flutter-version: '3.16.9'
           channel: stable
-
-      - name: Cache Flutter packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.pub-cache
-          key: ${{ runner.os }}-flutter-${{ hashFiles('pubspec.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-flutter-
-
+          
       - name: Install dependencies
         run: flutter pub get
 
@@ -34,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: release-apk
-          path: build/app/outputs/apk/release/app-release.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
 
   deploy_to_releases:
     needs: build_and_release
